@@ -64,6 +64,6 @@ class UserTest < ActiveSupport::TestCase
     @user.password_confirmation = "nonmatch"
     refute @user.valid?
     refute @user.save
-    assert @user.errors.messages[:password_confirmation].include?("Password confimration doesn't match Password")
+    assert @user.errors.messages[:password_confirmation].include?("doesn't match Password")
   end
 end
