@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users = User.order(:name).page params[:page]
   end
 
   # GET /users/{username}
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(
-      :id, :name, :username, :email, :password, :password_confirmation
+      :id, :name, :username, :email, :password, :password_confirmation, :page
     )
   end
 end
