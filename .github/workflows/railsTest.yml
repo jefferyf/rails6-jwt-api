@@ -1,6 +1,12 @@
 name: railsTest
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - 'master'
+  push:
+    branches:
+      - 'master'
 
 jobs:
   build:
@@ -9,6 +15,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Set up System
+      run: |
+        sudo apt-get install libsqlite3-dev
     - name: Set up Ruby 2.7
       uses: actions/setup-ruby@v1
       with:
